@@ -43,3 +43,15 @@ searching for a movie to watch is easier than ever.
 
 * [Entity-Relationship Diagram](erd.md)
 
+
+## Cloud/Device-based services or data
+
+* [The Movie Database API](https://developers.themoviedb.org/3/getting-started/introduction)
+
+* The above data source will be used to retrieve a list of movie titles based on user-inputted-text.
+
+* Users will have the ability to save queried titles into a Watchlist.
+
+* The device will store previous search parameters and results.
+
+* The app will have limited functionality without full-time access to the data source, restricted to browsing previous searches and watchlisted titles.
