@@ -5,23 +5,19 @@
 _Buffy_ is a convenient motion picture title finder 
 for audiences looking for viewing suggestions that 
 match specific preferences, or for those who need help 
-to remember the title of a film.  Users may select from a 
-variety of search fields, inputting as much or as little 
-information as they want, and _Buffy_ will return a list
-of results that fit those parameters.  With _Buffy_, users 
-have their very own personal film buff at their disposal
+to remember the title of a film.  Users are able to
+include as much or as little information as they want for their search,
+and _Buffy_ will return a list of results that fit those parameters.  
+With _Buffy_, users have their very own personal film buff at their disposal
 around the clock.
 
-When _Buffy_ is started, users will be presented with a
-screen of, ultimately, up to 15 different search fields, including
-title, director, actor, writer, composer, studio, release
-date, running time, genre, language, awards, and popular
-keywords.  The more search fields utilized, the narrower
+When _Buffy_ is started, users are greeted with a prompt to enter text
+for their search.  The more text entered, the narrower
 and more specific will be Buffy's returned list, which will
 be displayed on a subsequent screen that allows for watchlisting titles, 
 and archiving previous searches in the history, for later
-perusing.  Each title will be accompanied by a link to 
-a TMD page for logline browsing and trailer viewing, and ultimately
+perusing.  As a stretch goal, each title will be accompanied by a link to 
+a TMD page for logline browsing and trailer viewing, as well as 
 a link for online streaming.  With _Buffy_'s help, 
 searching for a movie to watch is easier than ever.
 
