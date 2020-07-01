@@ -4,6 +4,9 @@ import android.content.Context;
 import edu.cnm.deepdive.buffy.model.dao.MovieDao;
 import edu.cnm.deepdive.buffy.model.dao.SearchDao;
 import edu.cnm.deepdive.buffy.model.dao.SearchResultDao;
+import edu.cnm.deepdive.buffy.model.entity.Search;
+import io.reactivex.Completable;
+import io.reactivex.schedulers.Schedulers;
 
 public class SearchRepository {
 
@@ -22,5 +25,29 @@ public class SearchRepository {
     searchResultDao = database.getSearchResultDao();
   }
 
+  public Completable save(Search search) {
+    if (search.getId() == 0) {
+      return Completable.fromSingle(searchDao.insert(search))
+          .subscribeOn(Schedulers.io());
+    } else {
+      return Completable.fromSingle(searchDao.update(search))
+          .subscribeOn(Schedulers.io());
+    }
+  }
+
+  public Completable delete(Search search) {
+    if (search.getId() == 0) {
+      return Completable.fromAction(() -> {})
+          .subscribeOn(Schedulers.io());
+
+    } else {
+      return Completable.fromSingle(searchDao.delete(search))
+          .subscribeOn(Schedulers.io());
+
+    }
+  }
+  //TODO Add other methods as necessary.
 
 }
+
+
