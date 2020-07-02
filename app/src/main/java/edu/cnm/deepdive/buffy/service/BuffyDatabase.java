@@ -4,6 +4,8 @@ import android.app.Application;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverter;
+import androidx.room.TypeConverters;
 import edu.cnm.deepdive.buffy.model.dao.MovieDao;
 import edu.cnm.deepdive.buffy.model.dao.SearchDao;
 import edu.cnm.deepdive.buffy.model.dao.SearchResultDao;
@@ -11,11 +13,16 @@ import edu.cnm.deepdive.buffy.model.entity.Movie;
 import edu.cnm.deepdive.buffy.model.entity.Search;
 import edu.cnm.deepdive.buffy.model.entity.SearchResult;
 
+import edu.cnm.deepdive.buffy.service.BuffyDatabase.Converters;
+import java.util.Date;
+
+@TypeConverters({Converters.class})
 @Database(
     entities = {Movie.class, Search.class, SearchResult.class},
     version = 1,
     exportSchema = true
 )
+
 public abstract class BuffyDatabase extends RoomDatabase {
 
   private static final String DB_NAME = "buffy_db";
@@ -47,5 +54,19 @@ public abstract class BuffyDatabase extends RoomDatabase {
 
   }
 
+  public static class Converters {
 
+    @TypeConverter
+    public static Long dateToLong(Date value) {
+      return (value != null) ? value.getTime() : null;
+    }
+
+    @TypeConverter
+    public static Date longToDate(Long value) {
+      return (value != null) ? new Date(value) : null;
+    }
+  }
 }
+
+
+
