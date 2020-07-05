@@ -12,6 +12,10 @@ public class BuffyApplication extends Application {
     super.onCreate();
     BuffyDatabase.setContext(this);
     BuffyDatabase database = BuffyDatabase.getInstance();
+    database.getMovieDao().delete()
+        .subscribeOn(Schedulers.io())
+        .subscribe();
+
     Stetho.initializeWithDefaults(this);
   }
 

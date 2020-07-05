@@ -10,14 +10,14 @@ import java.util.Date;
 
 @Entity(
     indices = {
-        @Index(value = {"title"}, unique = true),
+        @Index(value = {"search_result_id"}, unique = true),
 //        @Index(value = {watchlistDate}, unique = true)
     },
     foreignKeys = {
         @ForeignKey(
             entity = Search.class,
             childColumns = "search_id",
-            parentColumns = "movie_id"
+            parentColumns = "search_id"
         )
     }
 )

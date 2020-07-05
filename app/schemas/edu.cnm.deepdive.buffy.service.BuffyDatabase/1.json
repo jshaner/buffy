@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "ad1390ac2a52d17c4862c284c62be72c",
+    "identityHash": "2ce1dc6cb12002a3d6034598f25bb8fd",
     "entities": [
       {
         "tableName": "Movie",
@@ -80,12 +80,21 @@
           ],
           "autoGenerate": true
         },
-        "indices": [],
+        "indices": [
+          {
+            "name": "index_Search_search_id",
+            "unique": true,
+            "columnNames": [
+              "search_id"
+            ],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_Search_search_id` ON `${TABLE_NAME}` (`search_id`)"
+          }
+        ],
         "foreignKeys": []
       },
       {
         "tableName": "SearchResult",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`search_result_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `search_id` INTEGER NOT NULL, `movie_id` INTEGER NOT NULL, `order` INTEGER NOT NULL COLLATE NOCASE, FOREIGN KEY(`search_id`) REFERENCES `SearchResult`(`movie_id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`search_result_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `search_id` INTEGER NOT NULL, `movie_id` INTEGER NOT NULL, `order` INTEGER NOT NULL COLLATE NOCASE, FOREIGN KEY(`search_id`) REFERENCES `Search`(`search_id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
         "fields": [
           {
             "fieldPath": "id",
@@ -120,6 +129,14 @@
         },
         "indices": [
           {
+            "name": "index_SearchResult_search_result_id",
+            "unique": true,
+            "columnNames": [
+              "search_result_id"
+            ],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_SearchResult_search_result_id` ON `${TABLE_NAME}` (`search_result_id`)"
+          },
+          {
             "name": "index_SearchResult_search_id",
             "unique": false,
             "columnNames": [
@@ -138,14 +155,14 @@
         ],
         "foreignKeys": [
           {
-            "table": "SearchResult",
+            "table": "Search",
             "onDelete": "NO ACTION",
             "onUpdate": "NO ACTION",
             "columns": [
               "search_id"
             ],
             "referencedColumns": [
-              "movie_id"
+              "search_id"
             ]
           }
         ]
@@ -154,7 +171,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'ad1390ac2a52d17c4862c284c62be72c')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '2ce1dc6cb12002a3d6034598f25bb8fd')"
     ]
   }
 }
