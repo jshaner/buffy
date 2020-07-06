@@ -28,12 +28,11 @@ public interface MovieDao {
   @Delete
   Single<Integer> delete(Movie... movie);
 
-//  @Transaction
-//  @Query("SELECT * FROM Quote ORDER BY text")
-//  LiveData<List<QuoteWithSource>> selectAll();
+  @Query("SELECT * FROM Movie ORDER BY movie_id")
+  LiveData<List<Movie>> selectAll();
 
-//  @Query("SELECT * FROM Quote WHERE source_id = :sourceId")
-//  Single<List<Quote>> selectBySourceId(Long sourceId);
+//  @Query("SELECT * FROM Search WHERE search_id = :search_Id")
+//  Single<List<Movie>> selectBySourceId(Long sourceId);
 
 //  @Transaction
  // @Query("SELECT * FROM Quote WHERE quote_id = :quoteId")
