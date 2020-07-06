@@ -7,8 +7,7 @@ for audiences looking for viewing suggestions that
 match specific preferences, or for those who need help 
 to remember the title of a film.  Users are able to
 include as much or as little information as they want for their search,
-and _Buffy_ will return a list of results that fit those parameters.  
-With _Buffy_, users have their very own personal film buff at their disposal
+and _Buffy_ will return a list of results that fit those parameters.  With _Buffy_, users have their very own personal film buff at their disposal
 around the clock.
 
 When _Buffy_ is started, users are greeted with a prompt to enter text
@@ -51,3 +50,12 @@ searching for a movie to watch is easier than ever.
 * The device will store previous search parameters and results.
 
 * The app will have limited functionality without full-time access to the data source, restricted to browsing previous searches and watchlisted titles.
+
+## [Entity Classes](https://github.com/jshaner/buffy/tree/master/app/src/main/java/edu/cnm/deepdive/buffy/model/entity)
+
+## [DAO Interfaces](https://github.com/jshaner/buffy/tree/master/app/src/main/java/edu/cnm/deepdive/buffy/model/dao)
+
+## [Database/Repository Classes](https://github.com/jshaner/buffy/tree/master/app/src/main/java/edu/cnm/deepdive/buffy/service)
+
+
+
