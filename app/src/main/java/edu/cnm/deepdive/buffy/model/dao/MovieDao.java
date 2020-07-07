@@ -31,12 +31,12 @@ public interface MovieDao {
   @Query("SELECT * FROM Movie ORDER BY movie_id")
   LiveData<List<Movie>> selectAll();
 
-//  @Query("SELECT * FROM Search WHERE search_id = :search_Id")
-//  Single<List<Movie>> selectBySourceId(Long sourceId);
+  @Query("SELECT * FROM Movie WHERE movie_id = :searchId")
+  Single<List<Movie>> selectBySourceId(Long searchId);
 
-//  @Transaction
- // @Query("SELECT * FROM Quote WHERE quote_id = :quoteId")
-//  Single<QuoteWithSource > selectById(long quoteId);
+  @Transaction
+  @Query("SELECT * FROM Movie WHERE movie_id = :movieId")
+  Single<Movie > selectById(long movieId);
 
 
 }

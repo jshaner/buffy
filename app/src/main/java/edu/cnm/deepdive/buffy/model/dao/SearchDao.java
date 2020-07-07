@@ -1,9 +1,12 @@
 package edu.cnm.deepdive.buffy.model.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
+import androidx.room.Query;
+import androidx.room.Transaction;
 import androidx.room.Update;
 import edu.cnm.deepdive.buffy.model.entity.Movie;
 import edu.cnm.deepdive.buffy.model.entity.Search;
@@ -26,16 +29,16 @@ public interface SearchDao {
   @Delete
   Single<Integer> delete(Search... search);
 
-//  @Transaction
-//  @Query("SELECT * FROM Quote ORDER BY text")
-//  LiveData<List<QuoteWithSource>> selectAll();
+  @Transaction
+  @Query("SELECT * FROM Search ORDER BY search_id")
+  LiveData<List<Search>> selectAll();
 
-//  @Query("SELECT * FROM Quote WHERE source_id = :sourceId")
-//  Single<List<Quote>> selectBySourceId(Long sourceId);
+  @Query("SELECT * FROM Search WHERE search_id = :searchId")
+  Single<List<Search>> selectBySourceId(Long searchId);
 
-//  @Transaction
-  // @Query("SELECT * FROM Quote WHERE quote_id = :quoteId")
-//  Single<QuoteWithSource > selectById(long quoteId);
+  @Transaction
+  @Query("SELECT * FROM Search WHERE search_id = :searchId")
+  Single<Search > selectById(long searchId);
 
 
 }

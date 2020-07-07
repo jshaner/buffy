@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.buffy.controller.ui.slideshow;
+package edu.cnm.deepdive.buffy.controller.slideshow;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

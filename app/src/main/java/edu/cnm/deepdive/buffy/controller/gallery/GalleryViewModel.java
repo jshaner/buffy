@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.buffy.controller.ui.gallery;
+package edu.cnm.deepdive.buffy.controller.gallery;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

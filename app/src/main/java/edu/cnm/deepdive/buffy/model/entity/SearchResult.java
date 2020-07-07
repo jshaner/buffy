@@ -11,7 +11,6 @@ import java.util.Date;
 @Entity(
     indices = {
         @Index(value = {"search_result_id"}, unique = true),
-//        @Index(value = {watchlistDate}, unique = true)
     },
     foreignKeys = {
         @ForeignKey(

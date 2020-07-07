@@ -12,7 +12,6 @@ import java.util.Date;
 @Entity(
     indices = {
         @Index(value = {"title"}, unique = true),
-//        @Index(value = {watchlistDate}, unique = true)
 
     }
 )

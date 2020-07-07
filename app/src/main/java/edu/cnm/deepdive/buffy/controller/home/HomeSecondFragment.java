@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.buffy.controller.ui.home;
+package edu.cnm.deepdive.buffy.controller.home;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
