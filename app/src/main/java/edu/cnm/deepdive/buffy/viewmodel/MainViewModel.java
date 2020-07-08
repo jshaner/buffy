@@ -17,12 +17,15 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
   private final SearchResultRepository searchResultRepository;
 
 
+
   public MainViewModel(@NonNull Application application) {
     super(application);
     movieRepository = new MovieRepository(application);
     searchRepository = new SearchRepository(application);
     searchResultRepository = new SearchResultRepository(application);
+
   }
+
 
 
 }

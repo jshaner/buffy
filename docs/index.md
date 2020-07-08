@@ -24,11 +24,11 @@ searching for a movie to watch is easier than ever.
 
 * Consumers who want to watch a movie with certain specific elements, and would like some title suggestions.
 
-    > As a parent of five, who works 40 hours per week, I don't have the time to keep up with what new movies have been released, and I know I've missed many titles that would interest me.  I don't have the time to scroll endlessly through websites, and read descriptions of random movies hoping to find something to watch in the few free hours I have each week.  I need a way to filter through a set of specific preferences to return a small, targeted list of titles from which to choose.
+    > As a parent of five, who works 40 hours per week, I need an app that can quickly filter through a set of specific preferences, to return a small, targeted list of movie titles from which to choose, and save my searches for when I have time to watch something.
 	
 * Consumers who want immediate assistance finding a specific film title.
 	
-	> As a movie buff it is very important to me to not forget the name of a film.  The other night I was out with friends and an old film came up in conversation, one that we all remembered obscure details about, but couldn't quite place the title.  If I had an app that could find the title based on a few details it would have come in handy that night.
+	> As a movie buff, I need an app that can quickly return the name of a specific film title I'm looking for, and save it so I won't forget.
 
 
 
