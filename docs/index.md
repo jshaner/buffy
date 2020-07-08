@@ -57,7 +57,7 @@ searching for a movie to watch is easier than ever.
 
 ## [Database/Repository Classes](https://github.com/jshaner/buffy/tree/master/app/src/main/java/edu/cnm/deepdive/buffy/service)
 
-## [DDL]()
+## [DDL](https://github.com/jshaner/buffy/blob/master/docs/ddl.md)
 
 
 
