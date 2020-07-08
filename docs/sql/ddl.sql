@@ -1,25 +1,34 @@
 CREATE TABLE IF NOT EXISTS `Movie`
 (
-    `movie_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-    `name`      TEXT                              NOT NULL COLLATE NOCASE
+    `movie_id`    INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    `external_id` INTEGER                           NOT NULL,
+    `date`        INTEGER COLLATE NOCASE,
+    `title`       TEXT                              NOT NULL COLLATE NOCASE
 );
 
-CREATE UNIQUE INDEX IF NOT EXISTS `index_Movie_name` ON `Movie` (`name`);
+CREATE UNIQUE INDEX IF NOT EXISTS `index_Movie_title` ON `Movie` (`title`);
 
 CREATE TABLE IF NOT EXISTS `Search`
 (
-    `search_id`  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-    `movie_id` INTEGER,
-    `text`      TEXT                              NOT NULL COLLATE NOCASE,
-    FOREIGN KEY (`search_id`) REFERENCES `Movie` (`movie_id`) ON UPDATE NO ACTION ON DELETE SET NULL
+    `search_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    `date`      INTEGER                           NOT NULL COLLATE NOCASE,
+    `filter`    TEXT                              NOT NULL COLLATE NOCASE
 );
 
-CREATE INDEX IF NOT EXISTS `index_Quote_source_id` ON `Search` (`search_id`);
+CREATE UNIQUE INDEX IF NOT EXISTS `index_Search_search_id` ON `Search` (`search_id`);
 
 CREATE TABLE IF NOT EXISTS `SearchResult`
 (
     `search_result_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-    `name`      TEXT                              NOT NULL COLLATE NOCASE
+    `search_id`        INTEGER                           NOT NULL,
+    `movie_id`         INTEGER                           NOT NULL,
+    `order`            INTEGER                           NOT NULL COLLATE NOCASE,
+    FOREIGN KEY (`search_id`) REFERENCES `Search` (`search_id`) ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
-CREATE UNIQUE INDEX IF NOT EXISTS `index_Search_Result_name` ON `Movie` (`name`);
+CREATE UNIQUE INDEX IF NOT EXISTS `index_SearchResult_search_result_id` ON `SearchResult` (`search_result_id`);
+
+CREATE INDEX IF NOT EXISTS `index_SearchResult_search_id` ON `SearchResult` (`search_id`);
+
+CREATE INDEX IF NOT EXISTS `index_SearchResult_movie_id` ON `SearchResult` (`movie_id`);
+
