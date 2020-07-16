@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.buffy.controller.gallery;
+package edu.cnm.deepdive.buffy.controller;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,9 +11,10 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import edu.cnm.deepdive.buffy.R;
+import edu.cnm.deepdive.buffy.controller.gallery.GalleryViewModel;
 //import edu.cnm.deepdive.buffy.controller.R;
 
-public class GalleryFragment extends Fragment {
+public class MovieFragment extends Fragment {
 
     private GalleryViewModel galleryViewModel;
 
@@ -21,8 +22,8 @@ public class GalleryFragment extends Fragment {
             ViewGroup container, Bundle savedInstanceState) {
         galleryViewModel =
                 ViewModelProviders.of(this).get(GalleryViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_gallery, container, false);
-        final TextView textView = root.findViewById(R.id.text_gallery);
+        View root = inflater.inflate(R.layout.fragment_movie, container, false);
+        final TextView textView = root.findViewById(R.id.text_movie);
         galleryViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {

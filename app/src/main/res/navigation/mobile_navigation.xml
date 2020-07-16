@@ -7,37 +7,21 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="edu.cnm.deepdive.buffy.controller.home.HomeFragment"
-        android:label="@string/menu_home"
+        android:name="edu.cnm.deepdive.buffy.controller.HomeFragment"
+        android:label="Search"
         tools:layout="@layout/fragment_home" >
 
-        <action
-            android:id="@+id/action_HomeFragment_to_HomeSecondFragment"
-            app:destination="@id/nav_home_second" />
-    </fragment>
-    <fragment
-        android:id="@+id/nav_home_second"
-        android:name="edu.cnm.deepdive.buffy.controller.home.HomeSecondFragment"
-        android:label="@string/home_second"
-        tools:layout="@layout/fragment_home_second">
-        <action
-            android:id="@+id/action_HomeSecondFragment_to_HomeFragment"
-            app:destination="@id/nav_home" />
-
-        <argument
-            android:name="myArg"
-            app:argType="string" />
     </fragment>
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="edu.cnm.deepdive.buffy.controller.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_movie"
+        android:name="edu.cnm.deepdive.buffy.controller.MovieFragment"
+        android:label="@string/menu_movie"
+        tools:layout="@layout/fragment_movie" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="edu.cnm.deepdive.buffy.controller.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_watchlist"
+        android:name="edu.cnm.deepdive.buffy.controller.WatchlistFragment"
+        android:label="@string/menu_watchlist"
+        tools:layout="@layout/fragment_watchlist" />
 </navigation>

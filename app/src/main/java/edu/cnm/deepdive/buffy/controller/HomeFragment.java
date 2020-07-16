@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.buffy.controller.home;
+package edu.cnm.deepdive.buffy.controller;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +12,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.fragment.NavHostFragment;
 import edu.cnm.deepdive.buffy.R;
+import edu.cnm.deepdive.buffy.controller.home.HomeViewModel;
 //import edu.cnm.deepdive.buffy.controller.R;
 
 public class HomeFragment extends Fragment {
@@ -23,7 +24,7 @@ public class HomeFragment extends Fragment {
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
+        final TextView textView = root.findViewById(R.id.text_search);
         homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
@@ -37,16 +38,5 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        view.findViewById(R.id.button_home);
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                HomeFragmentDirections.ActionHomeFragmentToHomeSecondFragment action = HomeFragmentDirections
-                    .actionHomeFragmentToHomeSecondFragment
-                        ("From HomeFragment");
-                NavHostFragment.findNavController(HomeFragment.this)
-                    .navigate(action);
-            }
-        });
     }
 }
