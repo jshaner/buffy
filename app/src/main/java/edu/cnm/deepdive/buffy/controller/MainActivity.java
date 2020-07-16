@@ -1,8 +1,11 @@
 package edu.cnm.deepdive.buffy.controller;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import androidx.annotation.NonNull;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -14,9 +17,11 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import edu.cnm.deepdive.buffy.R;
+import edu.cnm.deepdive.buffy.service.GoogleSignInService;
 
 public class MainActivity extends AppCompatActivity {
 
+    private GoogleSignInService signInService;
     private AppBarConfiguration mAppBarConfiguration;
 
     @Override
@@ -44,13 +49,35 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        signInService = GoogleSignInService.getInstance();
+        }
+
+    private void switchToLogin() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        intent. addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.options, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        boolean handled = true;
+        switch(item.getItemId()) {
+            case R.id.sign_out:
+                signInService.signOut().addOnCompleteListener((ignored) -> switchToLogin());
+                break;
+            default:
+                handled = super.onOptionsItemSelected(item);
+        }
+        return handled;
     }
 
     @Override
