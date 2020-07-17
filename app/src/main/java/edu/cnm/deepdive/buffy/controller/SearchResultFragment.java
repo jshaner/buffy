@@ -14,7 +14,7 @@ import edu.cnm.deepdive.buffy.R;
 import edu.cnm.deepdive.buffy.controller.gallery.GalleryViewModel;
 //import edu.cnm.deepdive.buffy.controller.R;
 
-public class MovieFragment extends Fragment {
+public class SearchResultFragment extends Fragment {
 
     private GalleryViewModel galleryViewModel;
 
@@ -22,7 +22,7 @@ public class MovieFragment extends Fragment {
             ViewGroup container, Bundle savedInstanceState) {
         galleryViewModel =
                 ViewModelProviders.of(this).get(GalleryViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_movie, container, false);
+        View root = inflater.inflate(R.layout.fragment_search_result, container, false);
         final TextView textView = root.findViewById(R.id.text_movie);
         galleryViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override

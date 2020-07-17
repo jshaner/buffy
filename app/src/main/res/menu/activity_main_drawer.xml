@@ -11,7 +11,7 @@
         <item
             android:id="@+id/nav_movie"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_movie" />
+            android:title="@string/menu_search_result" />
         <item
             android:id="@+id/nav_watchlist"
             android:icon="@drawable/ic_menu_slideshow"

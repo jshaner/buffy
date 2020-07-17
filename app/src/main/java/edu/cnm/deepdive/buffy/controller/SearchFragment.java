@@ -10,12 +10,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.navigation.fragment.NavHostFragment;
 import edu.cnm.deepdive.buffy.R;
 import edu.cnm.deepdive.buffy.controller.home.HomeViewModel;
 //import edu.cnm.deepdive.buffy.controller.R;
 
-public class HomeFragment extends Fragment {
+public class SearchFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
 
@@ -23,7 +22,7 @@ public class HomeFragment extends Fragment {
             ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
+        View root = inflater.inflate(R.layout.fragment_search, container, false);
         final TextView textView = root.findViewById(R.id.text_search);
         homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
