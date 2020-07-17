@@ -1,16 +1,16 @@
-package edu.cnm.deepdive.buffy.controller.home;
+package edu.cnm.deepdive.buffy.controller.gallery;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class HomeViewModel extends ViewModel {
+public class SearchResultViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public HomeViewModel() {
+    public SearchResultViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is search fragment");
+        mText.setValue("This is movie fragment");
     }
 
     public LiveData<String> getText() {
