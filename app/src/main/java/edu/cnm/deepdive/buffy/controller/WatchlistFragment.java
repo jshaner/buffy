@@ -23,11 +23,14 @@ public class WatchlistFragment extends Fragment {
         watchlistViewModel =
                 ViewModelProviders.of(this).get(WatchlistViewModel.class);
         View root = inflater.inflate(R.layout.fragment_watchlist, container, false);
-        final TextView textView = root.findViewById(R.id.search_field);
+        final TextView watchlist1 = root.findViewById(R.id.watchlist_title1);
+        final TextView watchlist2 = root.findViewById(R.id.watchlist_title2);
+
         watchlistViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                textView.setText(s);
+                watchlist1.setText(s);
+                watchlist2.setText(s);
             }
         });
         return root;
