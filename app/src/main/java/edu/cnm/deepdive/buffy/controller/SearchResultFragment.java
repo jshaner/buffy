@@ -24,11 +24,11 @@ public class SearchResultFragment extends Fragment {
         searchResultViewModel =
                 ViewModelProviders.of(this).get(SearchResultViewModel.class);
         View root = inflater.inflate(R.layout.fragment_search_result, container, false);
-        final TextInputLayout textInputLayout = root.findViewById(R.id.search_field);
+        final TextView textView = root.findViewById(R.id.search_field);
         searchResultViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                textInputLayout.getEditText();
+                textView.getEditableText();
             }
         });
         return root;

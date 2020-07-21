@@ -42,6 +42,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/add_to_watchlist"
+    android:rotation="90"
     app:layout_constraintStart_toStartOf="@id/vertical_guideline"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintBottom_toTopOf="@id/progress_horizontal_guideline3"/>
@@ -51,6 +52,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/add_to_watchlist"
+    android:rotation="90"
     app:layout_constraintStart_toStartOf="@id/vertical_guideline"
     app:layout_constraintTop_toTopOf="@id/progress_horizontal_guideline3"
     app:layout_constraintBottom_toTopOf="@id/progress_horizontal_guideline2"/>
@@ -60,6 +62,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/add_to_watchlist"
+    android:rotation="90"
     app:layout_constraintStart_toStartOf="@id/vertical_guideline"
     app:layout_constraintTop_toTopOf="@id/progress_horizontal_guideline2"
     app:layout_constraintBottom_toTopOf="@id/progress_horizontal_guideline1"/>
@@ -69,6 +72,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/add_to_watchlist"
+    android:rotation="90"
     app:layout_constraintStart_toStartOf="@id/vertical_guideline"
     app:layout_constraintTop_toBottomOf="@id/progress_horizontal_guideline1"
     app:layout_constraintBottom_toBottomOf="parent"/>

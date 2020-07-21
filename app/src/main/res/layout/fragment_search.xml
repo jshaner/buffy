@@ -19,22 +19,21 @@
     android:hint="Enter Search Criteria"
     app:hintEnabled="true"
     app:hintAnimationEnabled="true"
-    android:layout_margin="4dp"
     app:layout_constrainedWidth="false"
     app:layout_constrainedHeight="true"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintBottom_toTopOf="@id/progress_horizontal_guideline"
-    app:layout_constraintWidth_max="150dp"
-    android:layout_width="wrap_content"
+    app:layout_constraintWidth_max="300dp"
+    android:layout_width="250dp"
     android:layout_height="100dp">
 
     <com.google.android.material.textfield.TextInputEditText
       android:id="@+id/search_text"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:inputType="text"/>
+      android:inputType="textMultiLine"/>
 
   </com.google.android.material.textfield.TextInputLayout>
 
