@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import com.google.android.material.textfield.TextInputLayout;
 import edu.cnm.deepdive.buffy.R;
 import edu.cnm.deepdive.buffy.controller.gallery.SearchResultViewModel;
 //import edu.cnm.deepdive.buffy.controller.R;
@@ -23,11 +24,11 @@ public class SearchResultFragment extends Fragment {
         searchResultViewModel =
                 ViewModelProviders.of(this).get(SearchResultViewModel.class);
         View root = inflater.inflate(R.layout.fragment_search_result, container, false);
-        final TextView textView = root.findViewById(R.id.text_movie);
+        final TextInputLayout textInputLayout = root.findViewById(R.id.search_field);
         searchResultViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                textView.setText(s);
+                textInputLayout.getEditText();
             }
         });
         return root;

@@ -21,5 +21,7 @@
 
   <string name="login_failure">Unable to sign in with the provided credentials.</string>
   <string name="sign_out">Sign out</string>
+  <string name="buffy_find_my_movie">Buffy, Find My Movie</string>
+  <string name="add_to_watchlist">Add To Watchlist</string>
 
 </resources>
