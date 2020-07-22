@@ -24,11 +24,19 @@ public class SearchResultFragment extends Fragment {
         searchResultViewModel =
                 ViewModelProviders.of(this).get(SearchResultViewModel.class);
         View root = inflater.inflate(R.layout.fragment_search_result, container, false);
-        final TextView textView = root.findViewById(R.id.search_field);
+        final TextView movie1 = root.findViewById(R.id.text_movie1);
+        final TextView movie2 = root.findViewById(R.id.text_movie2);
+        final TextView movie3 = root.findViewById(R.id.text_movie3);
+        final TextView movie4 = root.findViewById(R.id.text_movie4);
+
         searchResultViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                textView.getEditableText();
+                movie1.setText(s);
+                movie2.setText(s);
+                movie3.setText(s);
+                movie4.setText(s);
+
             }
         });
         return root;
