@@ -5,46 +5,40 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context=".controller.SearchFragment" >
+  tools:context=".controller.SearchFragment"
+  android:padding="8dp">
 
-  <androidx.constraintlayout.widget.Guideline
-    android:id="@+id/progress_horizontal_guideline"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    app:layout_constraintGuide_percent="0.5"/>
 
   <com.google.android.material.textfield.TextInputLayout
     android:id="@+id/search_field"
     android:hint="Enter Search Criteria"
     app:hintEnabled="true"
     app:hintAnimationEnabled="true"
-    app:layout_constrainedWidth="false"
-    app:layout_constrainedHeight="true"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintBottom_toTopOf="@id/progress_horizontal_guideline"
-    app:layout_constraintWidth_max="300dp"
-    android:layout_width="250dp"
-    android:layout_height="100dp">
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp">
 
-    <com.google.android.material.textfield.TextInputEditText
+
+    <androidx.appcompat.widget.SearchView
       android:id="@+id/search_text"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:inputType="textMultiLine"/>
-
+      app:iconifiedByDefault="false"
+      app:queryHint="Enter Search Criteria"/>
   </com.google.android.material.textfield.TextInputLayout>
 
-
-  <Button
-    android:id="@+id/button_home"
-    android:layout_width="wrap_content"
-    android:layout_height="200dp"
-    android:text="@string/buffy_find_my_movie"
-    app:layout_constraintTop_toBottomOf="@id/progress_horizontal_guideline"
+  <androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/search_results"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    app:layout_constraintTop_toBottomOf="@id/search_field"
     app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintBottom_toBottomOf="parent" />
+    android:layout_margin="8dp"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
