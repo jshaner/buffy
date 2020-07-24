@@ -8,21 +8,27 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import edu.cnm.deepdive.buffy.model.entity.Movie;
 import edu.cnm.deepdive.buffy.model.entity.SearchResult;
+import edu.cnm.deepdive.buffy.service.SearchRepository;
 import java.util.List;
 
 public class SearchViewModel extends AndroidViewModel {
 
     private final MutableLiveData<List<Movie>> movies;
+    private final SearchRepository searchRepository;
 
     public SearchViewModel(@NonNull Application application) {
         super(application);
+        searchRepository = new SearchRepository(application);
         movies = new MutableLiveData<>();
         //TODO initialize live data fields
     }
 
-    public void search (String filter) {
+    public void search (String filter) { //TODO invoke in view model
+        searchRepository.search(filter)
+            .subscribe(
+                movies::postValue
+            );
 
-        //TODO send filter to repository to execute search
     }
 
     public LiveData<List<Movie>> getMovies() {

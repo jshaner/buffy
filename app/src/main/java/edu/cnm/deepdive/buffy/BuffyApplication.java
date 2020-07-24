@@ -19,6 +19,8 @@ public class BuffyApplication extends Application {
         .subscribe();
 
     Stetho.initializeWithDefaults(this);
+
+
   }
 
 }

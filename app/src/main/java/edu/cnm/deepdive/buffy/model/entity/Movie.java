@@ -1,13 +1,17 @@
 package edu.cnm.deepdive.buffy.model.entity;
 
 
+import android.view.ViewDebug.ExportedProperty;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 import java.util.Date;
+import java.util.List;
 
 @Entity(
     indices = {
@@ -22,12 +26,15 @@ public class Movie {
   @ColumnInfo(name = "movie_id")
   private long id;
 
+  @Expose
+  @SerializedName("id")
   @ColumnInfo(name = "external_id")
   private long externalId;
 
   @ColumnInfo(collate = ColumnInfo.NOCASE)
   private Date date;
 
+  @Expose
   @NonNull
   @ColumnInfo(collate = ColumnInfo.NOCASE)
   private String title;
@@ -63,5 +70,19 @@ public class Movie {
 
   public void setTitle(@NonNull String title) {
     this.title = title;
+  }
+
+  public static class Result{
+
+    @Expose
+    private List<Movie> results;
+
+    public List<Movie> getResults() {
+      return results;
+    }
+
+    public void setResults(List<Movie> results) {
+      this.results = results;
+    }
   }
 }

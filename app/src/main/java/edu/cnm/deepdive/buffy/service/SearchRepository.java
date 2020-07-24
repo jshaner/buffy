@@ -1,12 +1,17 @@
 package edu.cnm.deepdive.buffy.service;
 
 import android.content.Context;
+import android.os.Build;
 import androidx.lifecycle.LiveData;
+import edu.cnm.deepdive.buffy.BuildConfig;
 import edu.cnm.deepdive.buffy.model.dao.MovieDao;
 import edu.cnm.deepdive.buffy.model.dao.SearchDao;
 import edu.cnm.deepdive.buffy.model.dao.SearchResultDao;
+import edu.cnm.deepdive.buffy.model.entity.Movie;
+import edu.cnm.deepdive.buffy.model.entity.Movie.Result;
 import edu.cnm.deepdive.buffy.model.entity.Search;
 import io.reactivex.Completable;
+import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
 import java.util.List;
 
@@ -17,10 +22,12 @@ public class SearchRepository {
   private final MovieDao movieDao;
   private final SearchDao searchDao;
   private final SearchResultDao searchResultDao;
+  private final TmdbService tmdbService;
 
 
   public SearchRepository(Context context) {
     this.context = context;
+    tmdbService = TmdbService.getInstance();
     database = BuffyDatabase.getInstance();
     movieDao = database.getMovieDao();
     searchDao = database.getSearchDao();
@@ -53,6 +60,11 @@ public class SearchRepository {
     return searchDao.selectAll();
   }
 
+  public Single<List<Movie>> search(String query) {
+    return tmdbService.search(BuildConfig.API_KEY, query)
+        .subscribeOn(Schedulers.io())
+        .map(Result::getResults);
+  }
   //TODO Add other methods as necessary.
 
 }

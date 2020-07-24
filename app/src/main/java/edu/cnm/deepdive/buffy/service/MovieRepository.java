@@ -8,6 +8,7 @@ import edu.cnm.deepdive.buffy.model.dao.SearchDao;
 import edu.cnm.deepdive.buffy.model.dao.SearchResultDao;
 import edu.cnm.deepdive.buffy.model.entity.Movie;
 import io.reactivex.Completable;
+import io.reactivex.Maybe;
 import io.reactivex.schedulers.Schedulers;
 import java.util.List;
 
@@ -49,6 +50,14 @@ public class MovieRepository {
     }
   }
 
+  public LiveData<List<Movie>> getSearch(long searchId) {
+    return movieDao.selectBySourceId(searchId);
+  }
+
+  public Maybe<Movie> getByExternalId(int externalId) {
+    return movieDao.selectByExternalId(externalId)
+        .subscribeOn(Schedulers.io());
+  }
   public LiveData<List<Movie>> getAll() {
     return movieDao.selectAll();
   }
