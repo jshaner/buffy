@@ -23,6 +23,9 @@
   <string name="sign_out">Sign out</string>
   <string name="buffy_find_my_movie">Buffy, Find My Movie</string>
   <string name="add_to_watchlist">Add To Watchlist</string>
+  <string name="link_pattern"><![CDATA[
+  <a href="%1$s">%1$s</a>
+  ]]></string>
 
   <!-- TODO: Remove or change this placeholder text -->
   <string name="hello_blank_fragment">Hello blank fragment</string>

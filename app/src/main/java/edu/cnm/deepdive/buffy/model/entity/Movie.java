@@ -39,6 +39,8 @@ public class Movie {
   @ColumnInfo(collate = ColumnInfo.NOCASE)
   private String title;
 
+  private boolean watchlisted;
+
   public long getId() {
     return id;
   }
@@ -70,6 +72,14 @@ public class Movie {
 
   public void setTitle(@NonNull String title) {
     this.title = title;
+  }
+
+  public boolean isWatchlisted() {
+    return watchlisted;
+  }
+
+  public void setWatchlisted(boolean watchlisted) {
+    this.watchlisted = watchlisted;
   }
 
   public static class Result{

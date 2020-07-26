@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "2ce1dc6cb12002a3d6034598f25bb8fd",
+    "identityHash": "e30df28777f973c175100c63757c54ea",
     "entities": [
       {
         "tableName": "Movie",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`movie_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `external_id` INTEGER NOT NULL, `date` INTEGER COLLATE NOCASE, `title` TEXT NOT NULL COLLATE NOCASE)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`movie_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `external_id` INTEGER NOT NULL, `date` INTEGER COLLATE NOCASE, `title` TEXT NOT NULL COLLATE NOCASE, `watchlisted` INTEGER NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -30,6 +30,12 @@
             "fieldPath": "title",
             "columnName": "title",
             "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "watchlisted",
+            "columnName": "watchlisted",
+            "affinity": "INTEGER",
             "notNull": true
           }
         ],
@@ -171,7 +177,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '2ce1dc6cb12002a3d6034598f25bb8fd')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'e30df28777f973c175100c63757c54ea')"
     ]
   }
 }

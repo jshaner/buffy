@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 import edu.cnm.deepdive.buffy.R;
+import edu.cnm.deepdive.buffy.view.SearchResultAdapter;
 import edu.cnm.deepdive.buffy.viewmodel.SearchViewModel;
 //import edu.cnm.deepdive.buffy.controller.R;
 
@@ -36,8 +37,11 @@ public class SearchFragment extends Fragment implements OnQueryTextListener {
         super.onViewCreated(view, savedInstanceState);
         searchViewModel = new ViewModelProvider(getActivity()).get(SearchViewModel.class);
         searchViewModel.getMovies().observe(getViewLifecycleOwner(), (movies) -> {
-            //TODO create instance of custom recycler view adapter with movie search results
-            //TODO searchResults.setAdapter(adapter);
+            SearchResultAdapter adapter = new SearchResultAdapter(getContext(), movies, (movie, watchlisted) -> {
+                //TODO tell view model to update watchlisted status of movie
+            });
+
+            searchResults.setAdapter(adapter);
         });
 
     }
