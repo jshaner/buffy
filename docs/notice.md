@@ -1,3 +1,4 @@
+---
 title: "Notice"
 description: "Copyright & license information"
 heading_navigator:
