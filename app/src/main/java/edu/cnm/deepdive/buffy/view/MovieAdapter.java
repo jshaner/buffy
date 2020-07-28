@@ -4,8 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.Switch;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -13,17 +11,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import edu.cnm.deepdive.buffy.BuildConfig;
 import edu.cnm.deepdive.buffy.R;
 import edu.cnm.deepdive.buffy.model.entity.Movie;
-import edu.cnm.deepdive.buffy.view.SearchResultAdapter.Holder;
+import edu.cnm.deepdive.buffy.view.MovieAdapter.Holder;
 import java.util.List;
 
-public class SearchResultAdapter extends RecyclerView.Adapter<Holder>{
+public class MovieAdapter extends RecyclerView.Adapter<Holder> {
 
   private final Context context;
   private final List<Movie> movies;
   private final OnWatchlistedListener listener;
 
 
-  public SearchResultAdapter(Context context,
+  public MovieAdapter(Context context,
       List<Movie> movies,
       OnWatchlistedListener listener) {
     this.context = context;
@@ -75,10 +73,11 @@ public class SearchResultAdapter extends RecyclerView.Adapter<Holder>{
 
 
   public interface OnWatchlistedListener {
+
     void setWatchlisted(Movie movie, boolean watchlisted);
   }
 
-  }
+}
 
 
 

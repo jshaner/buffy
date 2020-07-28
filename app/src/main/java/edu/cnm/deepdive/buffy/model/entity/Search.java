@@ -47,4 +47,10 @@ public class Search {
   public void setFilter(@NonNull String filter) {
     this.filter = filter;
   }
+
+  @NonNull
+  @Override
+  public String toString() {
+    return filter;
+  }
 }

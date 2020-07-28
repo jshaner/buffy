@@ -34,13 +34,13 @@ public interface MovieDao {
 
   @Transaction
   @Query("SELECT m.* FROM Movie AS m INNER JOIN SearchResult AS r ON m.movie_id = r.movie_id WHERE r.search_id = :searchId ORDER BY m.title")
-  LiveData<List<Movie>> selectBySourceId(Long searchId);
+  LiveData<List<Movie>> selectBySearchId(Long searchId);
 
   @Query("SELECT * FROM Movie WHERE movie_id = :movieId")
   Single<Movie > selectById(long movieId);
 
   @Query("SELECT * FROM Movie WHERE external_id = :externalId")
-  Maybe<Movie>  selectByExternalId(int externalId);
+  Maybe<Movie>  selectByExternalId(long externalId);
 
 
 }

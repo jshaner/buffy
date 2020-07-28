@@ -2,7 +2,6 @@ package edu.cnm.deepdive.buffy.service;
 
 import android.content.Context;
 import androidx.lifecycle.LiveData;
-import androidx.room.Dao;
 import edu.cnm.deepdive.buffy.model.dao.MovieDao;
 import edu.cnm.deepdive.buffy.model.dao.SearchDao;
 import edu.cnm.deepdive.buffy.model.dao.SearchResultDao;
@@ -51,7 +50,7 @@ public class MovieRepository {
   }
 
   public LiveData<List<Movie>> getSearch(long searchId) {
-    return movieDao.selectBySourceId(searchId);
+    return movieDao.selectBySearchId(searchId);
   }
 
   public Maybe<Movie> getByExternalId(int externalId) {

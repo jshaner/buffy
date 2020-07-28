@@ -11,24 +11,33 @@
 
   <com.google.android.material.textfield.TextInputLayout
     android:id="@+id/search_field"
-    android:hint="Enter Search Criteria"
     app:hintEnabled="true"
     app:hintAnimationEnabled="true"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintEnd_toStartOf="@id/search"
     app:layout_constraintTop_toTopOf="parent"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_margin="8dp">
 
 
-    <androidx.appcompat.widget.SearchView
+    <AutoCompleteTextView
       android:id="@+id/search_text"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      app:iconifiedByDefault="false"
-      app:queryHint="Enter Search Criteria"/>
+      android:hint="Enter Search Criteria"/>
+
   </com.google.android.material.textfield.TextInputLayout>
+
+  <ImageView
+    android:id="@+id/search"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:src="@android:drawable/ic_menu_search"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="@id/search_field"
+    app:layout_constraintBottom_toBottomOf="@id/search_field"/>
 
   <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/search_results"

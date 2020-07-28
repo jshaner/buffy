@@ -4,23 +4,25 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.SearchView.OnQueryTextListener;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 import edu.cnm.deepdive.buffy.R;
-import edu.cnm.deepdive.buffy.view.SearchResultAdapter;
+import edu.cnm.deepdive.buffy.model.entity.Search;
+import edu.cnm.deepdive.buffy.view.MovieAdapter;
 import edu.cnm.deepdive.buffy.viewmodel.SearchViewModel;
 //import edu.cnm.deepdive.buffy.controller.R;
 
-public class SearchFragment extends Fragment implements OnQueryTextListener {
+public class SearchFragment extends Fragment {
 
     private SearchViewModel searchViewModel;
-    private SearchView searchText;
+    private AutoCompleteTextView searchText;
     private RecyclerView searchResults;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -28,7 +30,8 @@ public class SearchFragment extends Fragment implements OnQueryTextListener {
         View root = inflater.inflate(R.layout.fragment_search, container, false);
         searchText = root.findViewById(R.id.search_text);
         searchResults = root.findViewById(R.id.search_results);
-        searchText.setOnQueryTextListener(this);
+        root.findViewById(R.id.search).setOnClickListener((v) ->
+            searchViewModel.search(searchText.getText().toString().trim()));
         return root;
     }
 
@@ -37,23 +40,19 @@ public class SearchFragment extends Fragment implements OnQueryTextListener {
         super.onViewCreated(view, savedInstanceState);
         searchViewModel = new ViewModelProvider(getActivity()).get(SearchViewModel.class);
         searchViewModel.getMovies().observe(getViewLifecycleOwner(), (movies) -> {
-            SearchResultAdapter adapter = new SearchResultAdapter(getContext(), movies, (movie, watchlisted) -> {
-                //TODO tell view model to update watchlisted status of movie
+            MovieAdapter adapter = new MovieAdapter(getContext(), movies, (movie, watchlisted) -> {
+                movie.setWatchlisted(watchlisted);
+                searchViewModel.save(movie);
             });
 
             searchResults.setAdapter(adapter);
         });
 
+        searchViewModel.getSearches().observe(getViewLifecycleOwner(), (searches) -> {
+            ArrayAdapter<Search> adapter =
+                new ArrayAdapter<>(getContext(), android.R.layout.simple_dropdown_item_1line, searches);
+            searchText.setAdapter(adapter);
+        });
     }
 
-    @Override
-    public boolean onQueryTextSubmit(String query) {
-        searchViewModel.search(query.trim());
-        return true;
-    }
-
-    @Override
-    public boolean onQueryTextChange(String newText) {
-        return false;
-    }
 }

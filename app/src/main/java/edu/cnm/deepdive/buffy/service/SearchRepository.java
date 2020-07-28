@@ -10,10 +10,16 @@ import edu.cnm.deepdive.buffy.model.dao.SearchResultDao;
 import edu.cnm.deepdive.buffy.model.entity.Movie;
 import edu.cnm.deepdive.buffy.model.entity.Movie.Result;
 import edu.cnm.deepdive.buffy.model.entity.Search;
+import edu.cnm.deepdive.buffy.model.entity.SearchResult;
 import io.reactivex.Completable;
 import io.reactivex.Single;
+import io.reactivex.SingleSource;
 import io.reactivex.schedulers.Schedulers;
+import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class SearchRepository {
 
@@ -23,6 +29,7 @@ public class SearchRepository {
   private final SearchDao searchDao;
   private final SearchResultDao searchResultDao;
   private final TmdbService tmdbService;
+  private final ExecutorService pool;
 
 
   public SearchRepository(Context context) {
@@ -32,6 +39,7 @@ public class SearchRepository {
     movieDao = database.getMovieDao();
     searchDao = database.getSearchDao();
     searchResultDao = database.getSearchResultDao();
+    pool = Executors.newSingleThreadExecutor();
   }
 
   public Completable save(Search search) {
@@ -60,10 +68,87 @@ public class SearchRepository {
     return searchDao.selectAll();
   }
 
-  public Single<List<Movie>> search(String query) {
+  public LiveData<List<Movie>> getMovies(long searchId) {
+    return movieDao.selectBySearchId(searchId);
+
+  }
+
+  public Single<Search> search(String query) {
     return tmdbService.search(BuildConfig.API_KEY, query)
-        .subscribeOn(Schedulers.io())
-        .map(Result::getResults);
+        .subscribeOn(Schedulers.from(pool))
+        .flatMap((result) -> {
+          Search search = new Search();
+          search.setDate(new Date());
+          search.setFilter(query);
+          return searchDao.insert(search)
+              .map((searchId) -> {
+                search.setId(searchId);
+                List<SearchResult> searchResults = new LinkedList<>();
+                for (Movie movie : result.getResults()) {
+                  movieDao.selectByExternalId(movie.getExternalId())
+                      .switchIfEmpty((SingleSource<Movie>) (observer) -> {
+                        movieDao.insert(movie)
+                            .map((movieId) -> {
+                              movie.setId(movieId);
+                              return movie;
+                            })
+                            .subscribe(observer);
+                      })
+                      .map((m) -> {
+                        SearchResult searchResult = new SearchResult();
+                        searchResult.setSearchId(searchId);
+                        searchResult.setMovieId(m.getId());
+                        searchResults.add(searchResult);
+                        movie.setWatchlisted(m.isWatchlisted());
+                        return movie;
+                      })
+                      .subscribe();
+                }
+                searchResultDao.insert(searchResults)
+                    .subscribe();
+                return search;
+              });
+
+        });
+  }
+
+  public Single<List<Movie>> oldSearch(String query) {
+    return tmdbService.search(BuildConfig.API_KEY, query)
+        .subscribeOn(Schedulers.from(pool))
+        .map((result) -> {
+          Search search = new Search();
+          search.setDate(new Date());
+          search.setFilter(query);
+          searchDao.insert(search)
+              .map((searchId) -> {
+                List<SearchResult> searchResults = new LinkedList<>();
+                for (Movie movie : result.getResults()) {
+                  movieDao.selectByExternalId(movie.getExternalId())
+                      .switchIfEmpty((SingleSource<Movie>) (observer) -> {
+                        movieDao.insert(movie)
+                            .map((movieId) -> {
+                              movie.setId(movieId);
+                              return movie;
+                            })
+                        .subscribe(observer);
+                      })
+                      .map((m) -> {
+                        SearchResult searchResult = new SearchResult();
+                        searchResult.setSearchId(searchId);
+                        searchResult.setMovieId(m.getId());
+                        searchResults.add(searchResult);
+                        movie.setWatchlisted(m.isWatchlisted());
+                        return movie;
+                      })
+                      .subscribe();
+                 }
+                searchResultDao.insert(searchResults)
+                    .subscribe();
+                return search;
+              })
+              .subscribe();
+          return result.getResults();
+        });
   }
   //TODO Add other methods as necessary.
 
