@@ -77,6 +77,11 @@ public class MovieAdapter extends RecyclerView.Adapter<Holder> {
     void setWatchlisted(Movie movie, boolean watchlisted);
   }
 
+  public interface OnItemSelectedHelper {
+    void onSelected(Movie movie);
+  }
+
+
 }
 
 

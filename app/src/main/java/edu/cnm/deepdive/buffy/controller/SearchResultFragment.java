@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -14,12 +15,17 @@ import androidx.lifecycle.ViewModelProviders;
 import com.google.android.material.textfield.TextInputLayout;
 import edu.cnm.deepdive.buffy.R;
 import edu.cnm.deepdive.buffy.controller.gallery.SearchResultViewModel;
+import edu.cnm.deepdive.buffy.model.entity.Movie;
 import edu.cnm.deepdive.buffy.viewmodel.SearchViewModel;
 //import edu.cnm.deepdive.buffy.controller.R;
 
-public class SearchResultFragment extends Fragment {
+public class SearchResultFragment extends DialogFragment {
 
     private SearchResultViewModel searchResultViewModel;
+
+    public static WatchlistFragment newInstance(Movie movie) {
+        return null;
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
             ViewGroup container, Bundle savedInstanceState) {

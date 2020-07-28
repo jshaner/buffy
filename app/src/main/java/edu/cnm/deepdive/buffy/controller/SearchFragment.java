@@ -8,14 +8,13 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.SearchView;
-import androidx.appcompat.widget.SearchView.OnQueryTextListener;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 import edu.cnm.deepdive.buffy.R;
 import edu.cnm.deepdive.buffy.model.entity.Search;
 import edu.cnm.deepdive.buffy.view.MovieAdapter;
+import edu.cnm.deepdive.buffy.view.WatchlistTitlesAdapter;
 import edu.cnm.deepdive.buffy.viewmodel.SearchViewModel;
 //import edu.cnm.deepdive.buffy.controller.R;
 
