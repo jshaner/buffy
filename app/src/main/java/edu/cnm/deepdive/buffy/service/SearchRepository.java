@@ -1,14 +1,12 @@
 package edu.cnm.deepdive.buffy.service;
 
 import android.content.Context;
-import android.os.Build;
 import androidx.lifecycle.LiveData;
 import edu.cnm.deepdive.buffy.BuildConfig;
 import edu.cnm.deepdive.buffy.model.dao.MovieDao;
 import edu.cnm.deepdive.buffy.model.dao.SearchDao;
 import edu.cnm.deepdive.buffy.model.dao.SearchResultDao;
 import edu.cnm.deepdive.buffy.model.entity.Movie;
-import edu.cnm.deepdive.buffy.model.entity.Movie.Result;
 import edu.cnm.deepdive.buffy.model.entity.Search;
 import edu.cnm.deepdive.buffy.model.entity.SearchResult;
 import io.reactivex.Completable;
@@ -74,6 +72,15 @@ public class SearchRepository {
   }
 
   public Single<Search> search(String query) {
+    return searchDao.selectByFilter(query)
+        .subscribeOn(Schedulers.io())
+        .switchIfEmpty((SingleSource<? extends Search>) (observer) ->
+            searchTmdb(query)
+                .subscribe(observer)
+        );
+  }
+
+  public Single<Search> searchTmdb(String query) {
     return tmdbService.search(BuildConfig.API_KEY, query)
         .subscribeOn(Schedulers.from(pool))
         .flatMap((result) -> {
@@ -112,45 +119,12 @@ public class SearchRepository {
         });
   }
 
-  public Single<List<Movie>> oldSearch(String query) {
-    return tmdbService.search(BuildConfig.API_KEY, query)
-        .subscribeOn(Schedulers.from(pool))
-        .map((result) -> {
-          Search search = new Search();
-          search.setDate(new Date());
-          search.setFilter(query);
-          searchDao.insert(search)
-              .map((searchId) -> {
-                List<SearchResult> searchResults = new LinkedList<>();
-                for (Movie movie : result.getResults()) {
-                  movieDao.selectByExternalId(movie.getExternalId())
-                      .switchIfEmpty((SingleSource<Movie>) (observer) -> {
-                        movieDao.insert(movie)
-                            .map((movieId) -> {
-                              movie.setId(movieId);
-                              return movie;
-                            })
-                        .subscribe(observer);
-                      })
-                      .map((m) -> {
-                        SearchResult searchResult = new SearchResult();
-                        searchResult.setSearchId(searchId);
-                        searchResult.setMovieId(m.getId());
-                        searchResults.add(searchResult);
-                        movie.setWatchlisted(m.isWatchlisted());
-                        return movie;
-                      })
-                      .subscribe();
-                 }
-                searchResultDao.insert(searchResults)
-                    .subscribe();
-                return search;
-              })
-              .subscribe();
-          return result.getResults();
-        });
-  }
   //TODO Add other methods as necessary.
+
+  public LiveData<List<Movie>> getWatchlist() {
+
+    return movieDao.selectWatchlist();
+  }
 
 }
 

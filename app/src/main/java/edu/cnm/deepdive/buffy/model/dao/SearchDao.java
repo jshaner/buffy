@@ -10,6 +10,7 @@ import androidx.room.Transaction;
 import androidx.room.Update;
 import edu.cnm.deepdive.buffy.model.entity.Movie;
 import edu.cnm.deepdive.buffy.model.entity.Search;
+import io.reactivex.Maybe;
 import io.reactivex.Single;
 import java.util.Collection;
 import java.util.List;
@@ -33,12 +34,14 @@ public interface SearchDao {
   @Query("SELECT * FROM Search ORDER BY search_id")
   LiveData<List<Search>> selectAll();
 
-  @Query("SELECT * FROM Search WHERE search_id = :searchId")
-  Single<List<Search>> selectBySourceId(Long searchId);
-
   @Transaction
   @Query("SELECT * FROM Search WHERE search_id = :searchId")
-  Single<Search > selectById(long searchId);
+  Single<Search> selectById(long searchId);
+
+  @Query("SELECT * FROM Search WHERE filter = :filter")
+  Maybe<Search> selectByFilter(String filter);
+
+
 
 
 }

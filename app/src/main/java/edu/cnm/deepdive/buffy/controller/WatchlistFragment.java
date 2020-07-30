@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 import edu.cnm.deepdive.buffy.R;
 import edu.cnm.deepdive.buffy.controller.slideshow.WatchlistViewModel;
+import edu.cnm.deepdive.buffy.view.MovieAdapter;
 import edu.cnm.deepdive.buffy.view.WatchlistTitlesAdapter;
 import edu.cnm.deepdive.buffy.viewmodel.SearchViewModel;
 //import edu.cnm.deepdive.buffy.controller.R;
@@ -35,9 +36,12 @@ public class WatchlistFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         searchViewModel = new ViewModelProvider(getActivity())
             .get(SearchViewModel.class);
-        searchViewModel.getMovies().observe(getViewLifecycleOwner(), watchlists -> {
+        searchViewModel.getWatchlist().observe(getViewLifecycleOwner(), watchlists -> {
             if (watchlists != null) {
-                watchlistArray.setAdapter(new WatchlistTitlesAdapter(getContext(), watchlists));
+                watchlistArray.setAdapter(new MovieAdapter(getContext(), watchlists, (movie, watchlisted) -> {
+                    movie.setWatchlisted(watchlisted);
+                    searchViewModel.save(movie);
+                }));
             }
         });
     }

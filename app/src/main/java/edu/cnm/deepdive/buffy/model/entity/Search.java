@@ -7,7 +7,9 @@ import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import java.util.Date;
 
-@Entity(indices = @Index(value = "search_id", unique = true))
+@Entity(
+    indices = @Index(value = "filter", unique = true)
+)
 public class Search {
 
   @PrimaryKey(autoGenerate = true)

@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "e30df28777f973c175100c63757c54ea",
+    "identityHash": "04627bfba4b0f0e61f0c77dd4987487d",
     "entities": [
       {
         "tableName": "Movie",
@@ -88,12 +88,12 @@
         },
         "indices": [
           {
-            "name": "index_Search_search_id",
+            "name": "index_Search_filter",
             "unique": true,
             "columnNames": [
-              "search_id"
+              "filter"
             ],
-            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_Search_search_id` ON `${TABLE_NAME}` (`search_id`)"
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_Search_filter` ON `${TABLE_NAME}` (`filter`)"
           }
         ],
         "foreignKeys": []
@@ -177,7 +177,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'e30df28777f973c175100c63757c54ea')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '04627bfba4b0f0e61f0c77dd4987487d')"
     ]
   }
 }

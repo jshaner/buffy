@@ -42,6 +42,9 @@ public interface MovieDao {
   @Query("SELECT * FROM Movie WHERE external_id = :externalId")
   Maybe<Movie>  selectByExternalId(long externalId);
 
+  @Query("SELECT * FROM MOVIE WHERE watchlisted")
+  LiveData<List<Movie>> selectWatchlist();
+
 
 }
 
