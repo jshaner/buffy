@@ -1,0 +1,9 @@
+edu.cnm.deepdive.buffy
+edu.cnm.deepdive.buffy.controller
+edu.cnm.deepdive.buffy.controller.gallery
+edu.cnm.deepdive.buffy.controller.slideshow
+edu.cnm.deepdive.buffy.model.dao
+edu.cnm.deepdive.buffy.model.entity
+edu.cnm.deepdive.buffy.service
+edu.cnm.deepdive.buffy.view
+edu.cnm.deepdive.buffy.viewmodel
