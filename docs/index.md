@@ -22,7 +22,7 @@ and more specific will be Buffy's returned list of titles, which will
 be displayed on a subsequent screen that allows for watchlisting titles, 
 and archiving previous searches in the history, for later
 perusing.  Each title will be accompanied by a link to 
-a TMD (The Movie Database) page for logline browsing and trailer viewing, as well as 
+a TMDB (The Movie Database) page for logline browsing and trailer viewing, as well as 
 links for online streaming.  With _Buffy_'s help, 
 searching for a movie to watch is easier than ever.
 
@@ -39,28 +39,26 @@ searching for a movie to watch is easier than ever.
 
 ## Current State
 
-In Buffy's current state, users are able to perform simple title queries for movies.  Keyword searches are 
-limited to whether or not the keyword happens to appear in a movie's title.  At this time users
-cannot enter any other search criteria, nor can they add a title to their watchlist, or save previous
-searches in a search history field.
+In _Buffy_'s current state, users are able to perform simple title queries for movies.  Keyword searches are 
+limited to whether or not the keyword happens to appear in a movie's title.  Users are able to add or delete any title
+in their watchlist, and they may retrieve the watchlist at any time.  Right now users
+cannot enter any additional search criteria, nor can previous searches be perused on a unique screen, however, if 
+a duplicate search is performed, _Buffy_ will alert the user to that fact by populating the similar text under the search field.
 
 The following are aesthetic/cosmetic updates that would improve the app:
 
 * Displaying the userid of the user in the app's Navigation Drawer
 
+* Adding a list of search histories to a separate screen accessible from the navigation drawer
+
 The following are functional stretch goals to be added in the near future:
 
 * Full implementation for extended search criteria, including, actor name, genre, release date, running time, 
-studio, director name, and distributor.
+studio, director name, and distributor
 
-* User ability to save titles to a watchlist, and refer to it whenever the app is closed and reopened.
+* User ability to recall previous search results in their entirety
 
-* User ability to recall previous search results.
-
-* Notification to user of a title already included in their watchlist, if it should happen to be included in
-a new search result.
-
-* User ability to sort returned search lists by popularity, user rating, and chronology.
+* User ability to sort returned search results by popularity, user rating, and chronology
 
 ## Design documentation
 
@@ -68,26 +66,29 @@ a new search result.
 
 * [Entity-Relationship Diagram](erd.md)
 
-
-## Cloud/Device-based services or data
-
-* [The Movie Database API](https://developers.themoviedb.org/3/getting-started/introduction)
-
-* The above data source will be used to retrieve a list of movie titles based on user-inputted-text.
-
-* Users will have the ability to save queried titles into a Watchlist.
-
-* The device will store previous search parameters and results.
-
-* The app will have limited functionality without full-time access to the data source, restricted to browsing previous searches and watchlisted titles.
-
-## [Entity Classes](https://github.com/jshaner/buffy/tree/master/app/src/main/java/edu/cnm/deepdive/buffy/model/entity)
-
-## [DAO Interfaces](https://github.com/jshaner/buffy/tree/master/app/src/main/java/edu/cnm/deepdive/buffy/model/dao)
-
-## [Database/Repository Classes](https://github.com/jshaner/buffy/tree/master/app/src/main/java/edu/cnm/deepdive/buffy/service)
-
 ## [DDL](https://github.com/jshaner/buffy/blob/master/docs/ddl.md)
 
+## Technical requirements/dependencies
+
+* _Buffy_ was tested on the Pixel 3a API 28 emulator, and works in both portrait and landscape modes.
+
+* _Buffy_ uses several 3rd party libraries, including Google Sign In, Gson, Retrofit, ReactiveX, Room, and Stetho.
+
+* _Buffy_ uses the following permissions: android:permission.INTERNET
+
+## How do I use it?
+
+See [Instructions](instructions.md).
+
+## Build instructions
+
+* Navigate to the [Git Hub](https://github.com/jshaner/buffy) repository.
+    * Using the Clone or download button, copy the SSH URL of the repository into the clipboard.
+* With IntelliJ (or from a command shell), clone the repository (into a subdirectory of your bootcamp/projects directory).
+    * From IntelliJ, open the repository contents as an IntelliJ project.
+    * Under the Build menu at the top of the screen, select Build Project (CTRL+F9 on Windows)
+* Procure API key from [The Movie Database API](https://developers.themoviedb.org/3/getting-started/introduction)
+    * Add base_url, api_key, and website_url to a .properties file, and save in a services subdirectory of your bootcamp directory.
+    
 
 
