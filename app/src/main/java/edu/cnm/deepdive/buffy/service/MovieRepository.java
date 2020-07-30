@@ -11,6 +11,11 @@ import io.reactivex.Maybe;
 import io.reactivex.schedulers.Schedulers;
 import java.util.List;
 
+/**
+ * This class contains methods, with convenience annotations,
+ * which allow the user to save and delete movie information.
+ */
+
 public class MovieRepository {
 
   private final Context context;

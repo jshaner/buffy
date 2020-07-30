@@ -14,6 +14,11 @@ import edu.cnm.deepdive.buffy.model.entity.Movie;
 import edu.cnm.deepdive.buffy.view.MovieAdapter.Holder;
 import java.util.List;
 
+/**
+ * This class contains methods, with convenience annotations,
+ * which inflate the xml layouts and display search results.
+ */
+
 public class MovieAdapter extends RecyclerView.Adapter<Holder> {
 
   private final Context context;

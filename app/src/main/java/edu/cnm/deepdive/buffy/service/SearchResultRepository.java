@@ -10,6 +10,13 @@ import io.reactivex.Completable;
 import io.reactivex.schedulers.Schedulers;
 import java.util.List;
 
+
+/**
+ * This class contains methods, with convenience annotations,
+ * which allow the user to save and delete information from search queries
+ * returned from TMDB.
+ */
+
 public class SearchResultRepository {
 
   private final Context context;

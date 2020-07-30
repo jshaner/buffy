@@ -14,6 +14,10 @@ import io.reactivex.Single;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * This class contains queries for retrieving movie information from the database.
+ */
+
 @Dao
 public interface SearchResultDao {
 

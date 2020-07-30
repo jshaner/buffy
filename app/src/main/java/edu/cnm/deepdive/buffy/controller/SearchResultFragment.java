@@ -19,6 +19,12 @@ import edu.cnm.deepdive.buffy.model.entity.Movie;
 import edu.cnm.deepdive.buffy.viewmodel.SearchViewModel;
 //import edu.cnm.deepdive.buffy.controller.R;
 
+/**
+ * This class contains methods, with convenience annotations,
+ * which which inflate a search result fragment that is currently unused, and
+ * in the future will display prior search histories.
+ */
+
 public class SearchResultFragment extends DialogFragment {
 
     private SearchResultViewModel searchResultViewModel;

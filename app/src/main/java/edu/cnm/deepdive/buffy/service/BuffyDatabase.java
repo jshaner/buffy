@@ -23,6 +23,11 @@ import java.util.Date;
     exportSchema = true
 )
 
+/**
+ * This class contains static and abstract methods, with convenience annotations,
+ * which communicate with the Daos and the database.
+ */
+
 public abstract class BuffyDatabase extends RoomDatabase {
 
   private static final String DB_NAME = "buffy_db";

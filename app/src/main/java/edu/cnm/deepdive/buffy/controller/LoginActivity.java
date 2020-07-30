@@ -8,11 +8,20 @@ import android.os.Bundle;
 import edu.cnm.deepdive.buffy.R;
 import edu.cnm.deepdive.buffy.service.GoogleSignInService;
 
+/**
+ * This class contains methods, with convenience annotations,
+ * for implementing the Google Sign In feature
+ */
+
 public class LoginActivity extends AppCompatActivity {
 
   private static final int LOGIN_REQUEST_CODE = 1000;
 
   private GoogleSignInService service;
+
+  /**
+   * This method initiates the sign-in request.
+   */
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +36,10 @@ public class LoginActivity extends AppCompatActivity {
         });
   }
 
+  /**
+   * This method handles the result of user input after the request.
+   */
+
   @Override
   protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
     if (requestCode == LOGIN_REQUEST_CODE) {
@@ -38,6 +51,10 @@ public class LoginActivity extends AppCompatActivity {
       super.onActivityResult(requestCode, resultCode, data);
     }
   }
+
+  /**
+   * This method reverts back to the initial prompt.
+   */
 
   private void switchToMain()  {
     Intent intent = new Intent(this, MainActivity.class);

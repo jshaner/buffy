@@ -10,6 +10,12 @@ import java.util.Date;
 @Entity(
     indices = @Index(value = "filter", unique = true)
 )
+
+/**
+ * This class contains  methods, with convenience annotations,
+ * for defining database tables and retrieving information.
+ */
+
 public class Search {
 
   @PrimaryKey(autoGenerate = true)

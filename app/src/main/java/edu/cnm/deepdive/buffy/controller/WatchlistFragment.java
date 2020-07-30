@@ -17,6 +17,11 @@ import edu.cnm.deepdive.buffy.view.WatchlistTitlesAdapter;
 import edu.cnm.deepdive.buffy.viewmodel.SearchViewModel;
 //import edu.cnm.deepdive.buffy.controller.R;
 
+/**
+ * This class contains methods, with convenience annotations,
+ * which inflate the watchlist xml layout to display a user's watchlist.
+ */
+
 public class WatchlistFragment extends Fragment {
 
     private WatchlistViewModel watchlistViewModel;

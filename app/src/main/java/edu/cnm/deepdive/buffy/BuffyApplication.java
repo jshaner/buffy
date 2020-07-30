@@ -6,6 +6,11 @@ import edu.cnm.deepdive.buffy.service.BuffyDatabase;
 import edu.cnm.deepdive.buffy.service.GoogleSignInService;
 import io.reactivex.schedulers.Schedulers;
 
+/**
+ * This class contains methods, with convenience annotations,
+ * which initialize the Stetho dependency.
+ */
+
 public class BuffyApplication extends Application {
 
   @Override

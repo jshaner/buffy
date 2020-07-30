@@ -20,6 +20,11 @@ import java.util.List;
     }
 )
 
+/**
+ * This class contains  methods, with convenience annotations,
+ * for defining database tables and retrieving information.
+ */
+
 public class Movie {
 
   @PrimaryKey(autoGenerate = true)

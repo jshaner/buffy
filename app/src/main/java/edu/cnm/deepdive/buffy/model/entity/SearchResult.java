@@ -21,6 +21,11 @@ import java.util.Date;
     }
 )
 
+/**
+ * This class contains  methods, with convenience annotations,
+ * for defining database tables and retrieving information.
+ */
+
 public class SearchResult {
 
   @PrimaryKey(autoGenerate = true)

@@ -19,6 +19,12 @@ import androidx.appcompat.widget.Toolbar;
 import edu.cnm.deepdive.buffy.R;
 import edu.cnm.deepdive.buffy.service.GoogleSignInService;
 
+/**
+ * This class contains methods, with convenience annotations,
+ * which implement the navigation drawer aspect of the app, along with
+ * Google Sign In requirements.
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     private GoogleSignInService signInService;

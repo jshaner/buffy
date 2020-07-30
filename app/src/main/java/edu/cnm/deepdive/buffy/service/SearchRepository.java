@@ -19,6 +19,11 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * This class contains methods, with convenience annotations,
+ * which perform the search query through the TMDB.
+ */
+
 public class SearchRepository {
 
   private final Context context;

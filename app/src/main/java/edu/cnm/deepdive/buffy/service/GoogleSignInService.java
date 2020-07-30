@@ -13,6 +13,11 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import edu.cnm.deepdive.buffy.BuildConfig;
 
+/**
+ * This class contains the methods, with convenience annotations,
+ * for the Google Sign In button to respond and take the user into the app.
+ */
+
 public class GoogleSignInService {
 
   private static Application context;

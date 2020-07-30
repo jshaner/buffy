@@ -18,6 +18,11 @@ import edu.cnm.deepdive.buffy.view.WatchlistTitlesAdapter;
 import edu.cnm.deepdive.buffy.viewmodel.SearchViewModel;
 //import edu.cnm.deepdive.buffy.controller.R;
 
+/**
+ * This class contains methods, with convenience annotations,
+ * which inflate the xml layout for displaying results from a search query.
+ */
+
 public class SearchFragment extends Fragment {
 
     private SearchViewModel searchViewModel;

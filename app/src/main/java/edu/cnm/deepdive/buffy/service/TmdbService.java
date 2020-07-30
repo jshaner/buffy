@@ -14,6 +14,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
+/**
+ * This interface contains static methods, which act as the link between the user
+ * and the TMDB service, by using an API KEY.
+ */
+
 public interface TmdbService {
 
   @GET("search/movie")
